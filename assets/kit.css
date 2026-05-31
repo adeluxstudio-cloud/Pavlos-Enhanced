@@ -1,0 +1,245 @@
+/* ============================================================================
+   LANDING ENHANCED — kit.css
+   Reusable component primitives. Drop these classes onto any element on any
+   page that also loads colors_and_type.css. All values resolve through the
+   --ks-* tokens, so components inherit the current brand + light/dark mode
+   automatically.
+
+   THE CONSUMPTION RULE: reach for a kit primitive before inventing a new
+   class. Buttons -> .ks-button. Grouping 2-6 items -> .ks-bento. Sections ->
+   .ks-section / .ks-section-head. Status -> .ks-badge / .ks-tag. Invent only
+   when the kit truly doesn't cover the shape, and flag it when you do.
+   ============================================================================ */
+
+/* ===== Brand lockup ===================================================== */
+.ks-brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.ks-mark { width: 38px; height: 38px; display: grid; place-items: center; color: var(--ks-kinpaku); }
+.ks-mark svg { width: 30px; height: 30px; }
+.ks-wordmark {
+  color: var(--ks-kinpaku);
+  font-family: var(--ks-font-wordmark);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+  -webkit-font-smoothing: auto;
+}
+
+/* ===== Section scaffolding ============================================= */
+.ks-section { max-width: 1320px; margin: 0 auto; padding: 110px 56px; }
+.ks-section + .ks-section { border-top: 1px solid var(--ks-rule); }
+.ks-section-head { display: grid; gap: 14px; margin-bottom: 56px; max-width: 720px; }
+.ks-section-eyebrow {
+  color: var(--ks-kinpaku); font-family: var(--ks-mono); font-size: 0.7rem;
+  letter-spacing: 0.28em; text-transform: uppercase; margin: 0;
+}
+.ks-section-head h2 {
+  margin: 0; color: var(--ks-champagne); font-family: var(--ks-font-display);
+  font-size: clamp(2.2rem, 3.6vw, 3rem); font-weight: 600; line-height: 1.14;
+  letter-spacing: -0.005em;
+}
+.ks-section-sub {
+  color: var(--ks-text-muted); font-size: 0.96rem; line-height: 1.55;
+  margin: 4px 0 0; max-width: 60ch;
+}
+.ks-subsection { margin-top: 56px; }
+.ks-subsection-label {
+  display: block; color: var(--ks-kinpaku); font-family: var(--ks-mono);
+  font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 22px;
+}
+
+/* ===== Buttons ========================================================= */
+.ks-button {
+  position: relative; min-height: 52px; display: inline-flex; align-items: center;
+  justify-content: center; gap: 14px; padding: 0 28px; border-radius: 2px;
+  font-family: var(--ks-font); font-size: 0.96rem; font-weight: 500; line-height: 1;
+  text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  transition: transform 180ms var(--ks-ease), background-color 180ms var(--ks-ease),
+              border-color 180ms var(--ks-ease), color 180ms var(--ks-ease);
+}
+.ks-button .ks-button-arrow { width: 16px; height: 8px; display: inline-block; flex: none; }
+.ks-button-arrow svg { width: 100%; height: 100%; display: block; }
+
+.ks-button.ks-button-primary { color: var(--ks-lacquer-deep); background: var(--ks-kinpaku); border-color: var(--ks-kinpaku); }
+.ks-button.ks-button-primary:hover { background: var(--ks-kinpaku-pale); border-color: var(--ks-kinpaku-pale); color: var(--ks-lacquer-deep); transform: translateY(-1px); }
+.ks-button.ks-button-primary:active { transform: translateY(0) scale(0.99); background: var(--ks-kinpaku-rich); border-color: var(--ks-kinpaku-rich); }
+
+.ks-button.ks-button-secondary { color: var(--ks-kinpaku); background: transparent; border-color: var(--ks-kinpaku); }
+.ks-button.ks-button-secondary:hover { background: oklch(77% 0.14 82 / 0.08); color: var(--ks-kinpaku); transform: translateY(-1px); }
+.ks-button.ks-button-secondary:active { background: oklch(77% 0.14 82 / 0.16); transform: translateY(0) scale(0.99); }
+
+.ks-button.ks-button-ghost { color: var(--ks-champagne); background: transparent; border-color: transparent; padding: 0 14px; }
+.ks-button.ks-button-ghost:hover { color: var(--ks-kinpaku); }
+
+.ks-button[disabled], .ks-button.ks-button-disabled {
+  color: var(--ks-text-mute-deep); background: transparent; border-color: var(--ks-rule);
+  cursor: not-allowed; transform: none !important;
+}
+.ks-button:focus-visible { outline: 2px solid var(--ks-patina); outline-offset: 3px; }
+.ks-button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+
+/* ===== Form controls =================================================== */
+.ks-form-sample { display: grid; gap: 22px; max-width: 360px; }
+.ks-form-sample label { display: grid; gap: 8px; color: var(--ks-text-muted); font-size: 0.82rem; letter-spacing: 0.04em; }
+.ks-input,
+.ks-form-sample input[type="search"], .ks-form-sample input[type="text"], .ks-form-sample input[type="email"] {
+  min-height: 46px; padding: 0 14px; border: 1px solid var(--ks-rule); border-radius: 2px;
+  background: var(--ks-lacquer-raised); color: var(--ks-champagne); font-family: var(--ks-font); font-size: 0.92rem;
+}
+.ks-input:focus,
+.ks-form-sample input:focus { outline: none; border-color: var(--ks-patina); }
+
+.ks-toggle { display: flex !important; align-items: center; gap: 12px !important; }
+.ks-toggle input {
+  appearance: none; width: 44px; height: 24px; border-radius: 999px; border: 1px solid var(--ks-rule);
+  background: var(--ks-graphite); position: relative; cursor: pointer; flex: none;
+}
+.ks-toggle input::before {
+  content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; border-radius: 999px;
+  background: var(--ks-text-muted); transition: transform 220ms var(--ks-ease), background 220ms var(--ks-ease);
+}
+.ks-toggle input:checked { border-color: var(--ks-patina); background: oklch(48% 0.08 188 / 0.2); }
+.ks-toggle input:checked::before { transform: translateX(20px); background: var(--ks-patina); }
+.ks-toggle span { color: var(--ks-champagne); font-size: 0.92rem; }
+
+.ks-checkbox { display: flex; align-items: center; gap: 10px; color: var(--ks-champagne); font-size: 0.92rem; cursor: pointer; }
+.ks-checkbox input {
+  appearance: none; width: 18px; height: 18px; border: 1px solid var(--ks-rule); border-radius: 2px;
+  background: var(--ks-lacquer-raised); position: relative; cursor: pointer; flex: none;
+}
+.ks-checkbox input:checked { border-color: var(--ks-kinpaku); background: var(--ks-kinpaku); }
+.ks-checkbox input:checked::after {
+  content: ""; position: absolute; left: 5px; top: 2px; width: 5px; height: 9px;
+  border: solid var(--ks-lacquer-deep); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg);
+}
+.ks-select {
+  appearance: none; min-height: 46px; padding: 0 38px 0 14px; border: 1px solid var(--ks-rule); border-radius: 2px;
+  background-color: var(--ks-lacquer-raised);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='none' stroke='%23c89a5a' stroke-width='1.2'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; background-size: 10px 6px;
+  color: var(--ks-champagne); font-family: var(--ks-font); font-size: 0.92rem; cursor: pointer;
+}
+
+/* ===== Tabs ============================================================ */
+.ks-tabs { max-width: 460px; }
+.ks-tab-list { display: flex; border-bottom: 1px solid var(--ks-rule); }
+.ks-tab-list button {
+  flex: 1; min-height: 42px; border: 0; border-bottom: 2px solid transparent; background: transparent;
+  color: var(--ks-text-muted); cursor: pointer; font-family: var(--ks-font); font-size: 0.92rem;
+  transition: color 180ms var(--ks-ease), border-color 180ms var(--ks-ease);
+}
+.ks-tab-list button:hover { color: var(--ks-champagne); }
+.ks-tab-list button[aria-selected="true"] { color: var(--ks-kinpaku); border-bottom-color: var(--ks-kinpaku); }
+.ks-tab-panel { padding: 22px 4px 0; color: var(--ks-champagne); font-size: 0.92rem; line-height: 1.6; }
+
+/* ===== Status badges + issue tags ====================================== */
+.ks-badge-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.ks-badge {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 30px; padding: 0 14px;
+  border: 1px solid currentColor; border-radius: 2px; font-family: var(--ks-font); font-size: 0.78rem; letter-spacing: 0.06em;
+}
+.ks-badge::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.ks-badge.is-detected { color: var(--ks-vermilion); }
+.ks-badge.is-improved { color: var(--ks-patina); }
+.ks-badge.is-ready { color: var(--ks-kinpaku); }
+
+.ks-tag-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.ks-tag {
+  display: inline-flex; align-items: center; min-height: 26px; padding: 0 12px; border: 1px solid currentColor;
+  border-radius: 999px; font-family: var(--ks-font); font-size: 0.76rem; letter-spacing: 0.04em;
+}
+.ks-tag.is-detected { color: var(--ks-vermilion); }
+.ks-tag.is-improved { color: var(--ks-patina); }
+.ks-tag.is-neutral { color: var(--ks-text-muted); }
+.ks-tag.is-ready { color: var(--ks-kinpaku); }
+
+/* ===== Pagination ====================================================== */
+.ks-pagination { display: flex; align-items: center; gap: 4px; }
+.ks-pagination button {
+  min-width: 36px; min-height: 36px; display: grid; place-items: center; border: 1px solid var(--ks-rule);
+  border-radius: 2px; background: transparent; color: var(--ks-champagne); font-family: var(--ks-font); font-size: 0.86rem;
+  cursor: pointer; transition: border-color 180ms var(--ks-ease), color 180ms var(--ks-ease);
+}
+.ks-pagination button:hover { border-color: var(--ks-kinpaku); color: var(--ks-kinpaku); }
+.ks-pagination button[aria-current="page"] { border-color: var(--ks-kinpaku); color: var(--ks-kinpaku); }
+
+/* ===== Toast / alert =================================================== */
+.ks-toast {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px 18px;
+  border: 1px solid currentColor; border-radius: 2px; max-width: 420px; background: var(--ks-lacquer-raised);
+}
+.ks-toast-icon { width: 18px; height: 18px; display: grid; place-items: center; color: currentColor; }
+.ks-toast strong { display: block; color: var(--ks-champagne); font-family: var(--ks-font); font-size: 0.92rem; font-weight: 500; }
+.ks-toast span:not(.ks-toast-close) { color: var(--ks-text-muted); font-size: 0.82rem; display: block; margin-top: 2px; }
+.ks-toast.is-success { color: var(--ks-patina); }
+.ks-toast.is-warning { color: var(--ks-vermilion); }
+.ks-toast-close { width: 22px; height: 22px; display: grid; place-items: center; border: 0; background: transparent; color: var(--ks-text-muted); cursor: pointer; }
+.ks-toast-close svg { width: 12px; height: 12px; }
+
+/* ===== Icon button + tooltip =========================================== */
+.ks-icon-button { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--ks-rule); border-radius: 999px; background: transparent; color: var(--ks-kinpaku); cursor: pointer; }
+.ks-tooltip {
+  position: absolute; bottom: calc(100% - 18px); left: 50%; transform: translateX(-50%); width: 200px; padding: 10px 12px;
+  border: 1px solid var(--ks-rule); background: var(--ks-lacquer-deep); color: var(--ks-champagne); font-size: 0.8rem;
+  line-height: 1.4; border-radius: 2px; opacity: 0; pointer-events: none; transition: opacity 160ms var(--ks-ease);
+}
+.ks-icon-button:hover + .ks-tooltip, .ks-icon-button:focus-visible + .ks-tooltip { opacity: 1; }
+
+/* ===== Modal =========================================================== */
+.ks-modal { position: relative; max-width: 440px; padding: 28px; border: 1px solid var(--ks-rule); background: var(--ks-lacquer-raised); border-radius: 2px; }
+.ks-modal h3 { margin: 0 0 8px; color: var(--ks-champagne); font-family: var(--ks-font); font-size: 1.1rem; font-weight: 500; }
+.ks-modal p { margin: 0 0 22px; color: var(--ks-text-muted); font-size: 0.92rem; line-height: 1.5; }
+.ks-modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.ks-modal-close { position: absolute; top: 16px; right: 16px; width: 24px; height: 24px; display: grid; place-items: center; border: 0; background: transparent; color: var(--ks-text-muted); cursor: pointer; }
+
+/* ===== Empty state ===================================================== */
+.ks-empty { display: grid; place-items: center; gap: 14px; padding: 56px 28px; text-align: center; border: 1px dashed var(--ks-rule); border-radius: 2px; }
+.ks-empty-icon { width: 36px; height: 36px; display: grid; place-items: center; color: var(--ks-kinpaku); }
+.ks-empty strong { color: var(--ks-champagne); font-family: var(--ks-font); font-size: 1rem; font-weight: 500; }
+.ks-empty p { margin: 0; color: var(--ks-text-muted); font-size: 0.86rem; }
+
+/* ===== Changelog ======================================================= */
+.ks-changelog { display: grid; gap: 18px; }
+.ks-changelog-entry { display: grid; grid-template-columns: 100px 1fr; gap: 24px; align-items: start; padding-bottom: 18px; border-bottom: 1px solid var(--ks-rule); }
+.ks-changelog-entry:last-child { border-bottom: 0; }
+.ks-changelog-date { color: var(--ks-text-muted); font-family: var(--ks-mono); font-size: 0.78rem; }
+.ks-changelog-body strong { color: var(--ks-champagne); font-family: var(--ks-font); font-weight: 500; font-size: 0.96rem; display: block; }
+.ks-changelog-body em {
+  display: inline-block; margin-left: 8px; padding: 1px 8px; color: var(--ks-kinpaku); border: 1px solid var(--ks-kinpaku);
+  font-style: normal; font-family: var(--ks-mono); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 2px;
+}
+.ks-changelog-body p { margin: 4px 0 0; color: var(--ks-text-muted); font-size: 0.86rem; }
+
+/* ===== Bento — the canonical alternative to card-in-card =============== */
+.ks-bento {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px;
+  background: oklch(0.17 0 0); border-top: 8px solid oklch(0.17 0 0); border-bottom: 8px solid oklch(0.17 0 0);
+}
+.ks-bento-tile { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 48px; background: var(--ks-lacquer); border: 0; border-radius: 0; overflow: hidden; }
+.ks-bento-tile--span-4 { grid-column: span 4; }
+.ks-bento-tile--span-6 { grid-column: span 6; }
+.ks-bento-tile--span-8 { grid-column: span 8; }
+@media (max-width: 980px) { .ks-bento-tile { grid-column: 1 / -1; } }
+.ks-bento-num { font-family: var(--ks-mono); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ks-kinpaku); }
+.ks-bento-num[data-color="patina"] { color: var(--ks-patina); }
+
+/* ===== Card — compact, flat, sharply bounded =========================== */
+.ks-card { background: var(--ks-lacquer-raised); border: 1px solid var(--ks-rule); border-radius: 4px; padding: 24px; color: var(--ks-text); }
+.ks-card h3 { margin: 0 0 8px; color: var(--ks-champagne); font-family: var(--ks-font); font-size: 1.18rem; font-weight: 500; }
+
+/* ===== Skeleton (loading) ============================================== */
+.ks-skeleton { display: grid; gap: 8px; max-width: 280px; }
+.ks-skeleton span { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--ks-graphite), oklch(22% 0.008 95), var(--ks-graphite)); background-size: 200% 100%; animation: ks-shimmer 1.8s linear infinite; }
+.ks-skeleton span:nth-child(2) { width: 70%; }
+.ks-skeleton span:nth-child(3) { width: 50%; }
+@keyframes ks-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ===== Hairline divider + gold-dust rule =============================== */
+.ks-rule-line { height: 1px; background: var(--ks-rule); border: 0; margin: 0; }
+.ks-rule-gold { height: 1px; background: var(--ks-rule-strong); border: 0; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ks-skeleton span { animation: none; }
+  .ks-button, .ks-toggle input::before { transition-duration: 0.01ms; }
+}

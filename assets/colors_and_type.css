@@ -1,0 +1,262 @@
+/* ============================================================================
+   LANDING ENHANCED — colors_and_type.css
+   The single source of truth for color + typography tokens.
+
+   Visual foundation: the "Neo Kinpaku" system — warm-black urushi lacquer,
+   Japanese gold-leaf (kinpaku) as the primary accent, verdigris patina as the
+   secondary state accent. Two type faces: Alumni Sans Pinstripe (display) and
+   Albert Sans (body/UI). Values mirror the source design system verbatim; see
+   README.md for provenance.
+
+   Token names use the --ks-* prefix (the kit + UI kits read these directly).
+   --le-* aliases and .le-* helper classes are provided for ergonomics.
+
+   All color is authored in OKLCH. Hex only appears inside third-party assets.
+   ============================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300..700;1,400&family=Alumni+Sans:wght@300..700&family=Alumni+Sans+Pinstripe&family=Roboto+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ===== Brand anchors ===================================================
+     Two anchors carry the brand. Kinpaku gold = commitment, brand voice,
+     primary CTA. Verdigris patina = state, signal, "improved". Everything
+     else is supporting. */
+  --ks-kinpaku:        oklch(84% 0.19 80.46);  /* primary accent / wordmark / icon */
+  --ks-kinpaku-pale:   oklch(86% 0.07 84);     /* hover lift, pale fills */
+  --ks-kinpaku-rich:   oklch(77% 0.13 82);     /* active CTA, severity-medium */
+  --ks-kinpaku-deep:   oklch(61% 0.085 78);    /* borders against the brand */
+
+  --ks-patina:         oklch(70% 0.12 188);    /* secondary accent */
+  --ks-patina-pale:    oklch(82% 0.07 188);    /* hover lift on patina */
+  --ks-patina-deep:    oklch(49% 0.08 188);    /* deep oxide, dark variants */
+
+  --ks-vermilion:      oklch(58% 0.15 35);     /* warning / error / anti-pattern only */
+
+  /* ===== Surfaces — warm-black lacquer carries everything ================ */
+  --ks-lacquer:        oklch(7% 0.006 95);     /* page ground */
+  --ks-lacquer-deep:   oklch(4% 0.004 95);     /* deepest inset, footer depth */
+  --ks-lacquer-raised: oklch(11% 0.006 95);    /* raised panels, cards, inputs */
+  --ks-graphite:       oklch(15% 0.008 95);    /* inactive surfaces */
+  --ks-graphite-2:     oklch(19% 0.008 95);    /* one step up from graphite */
+
+  /* ===== Text — runs near-neutral + bright so copy reads crisp on lacquer.
+     Warmth lives in the gold accents + surfaces, never in the type. ======= */
+  --ks-champagne:      oklch(91% 0 0);         /* headlines, <strong> */
+  --ks-text:           oklch(88% 0 0);         /* body */
+  --ks-text-muted:     oklch(72% 0 0);         /* captions, meta */
+  --ks-text-faint:     oklch(62% 0 0);         /* subdued */
+  --ks-text-mute-deep: oklch(52% 0 0);         /* disabled */
+
+  /* ===== Rules — default hairline is neutral; "strong" stays gold (focus,
+     active, structural brand anchors). ==================================== */
+  --ks-rule:           oklch(78% 0 0 / 0.16);
+  --ks-rule-strong:    oklch(74% 0.09 82 / 0.6);
+
+  /* ===== Code — one treatment site-wide ================================= */
+  --ks-code-fg:           oklch(91% 0 0);
+  --ks-code-bg:           var(--ks-graphite-2);
+  --ks-code-radius:       3px;
+  --ks-code-pad:          0.3em 0.5em;
+  --ks-code-block-fg:     oklch(86% 0 0);
+  --ks-code-block-bg:     var(--ks-lacquer-deep);
+  --ks-code-block-border: var(--ks-rule);
+  --ks-code-block-radius: 2px;
+  --ks-code-cmd:          var(--ks-kinpaku);
+
+  /* ===== Typography — three faces ======================================= */
+  --ks-font-display:  "Alumni Sans Pinstripe", "Alumni Sans", "Albert Sans", Arial, sans-serif;
+  --ks-font-wordmark: "Alumni Sans", "Alumni Sans Pinstripe", "Albert Sans", Arial, sans-serif;
+  --ks-font:          "Albert Sans", "Avenir Next", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --ks-mono:          "Roboto Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Type scale. The display vs headline weight split is deliberate: hero h1
+     reads thin (300) for elegance; section h2s read heavier (600) to anchor
+     each block. Section h2 looks heavier than the h1 on purpose. */
+  --ks-type-display-size:   clamp(3.4rem, 6.5vw, 5.6rem);
+  --ks-type-display-weight: 300;
+  --ks-type-display-line:   1.08;
+  --ks-type-display-track:  -0.01em;
+
+  --ks-type-headline-size:   clamp(2.6rem, 4vw, 3.4rem);
+  --ks-type-headline-weight: 600;
+  --ks-type-headline-line:   1.1;
+
+  --ks-type-title-size:   1.18rem;
+  --ks-type-title-weight: 500;
+  --ks-type-title-line:   1.35;
+
+  --ks-type-body-size: 1.02rem;
+  --ks-type-body-line: 1.8;
+
+  --ks-type-eyebrow-size:  0.7rem;
+  --ks-type-eyebrow-track: 0.18em;
+
+  --ks-type-wordmark-size:  1.3rem;
+  --ks-type-wordmark-track: 0.15em;
+
+  --ks-type-mono-size:  0.72rem;
+  --ks-type-mono-track: 0.22em;
+
+  /* ===== Spacing scale ================================================== */
+  --ks-space-xs:  8px;
+  --ks-space-sm:  16px;
+  --ks-space-md:  24px;
+  --ks-space-lg:  32px;
+  --ks-space-xl:  48px;
+  --ks-space-2xl: 80px;
+  --ks-space-3xl: 112px;
+
+  /* ===== Radii — small, restrained ====================================== */
+  --ks-radius-none: 0;
+  --ks-radius-xs:   2px;   /* buttons, CTAs, most surfaces */
+  --ks-radius-sm:   4px;   /* inputs, cards */
+  --ks-radius-md:   6px;
+  --ks-radius-lg:   8px;   /* live-mode picker bars */
+  --ks-radius-pill: 999px; /* tags, toggles, status dots */
+
+  /* ===== Elevation — mostly flat; depth from material + hairline ========= */
+  --ks-shadow-panel:  0 24px 70px oklch(2% 0.004 95 / 0.42);  /* large framed modules */
+  --ks-shadow-cta:    0 18px 48px oklch(2% 0.004 95 / 0.4);   /* CTA lift */
+  --ks-glow-patina:   0 0 22px oklch(70% 0.105 190 / 0.24);   /* tiny live indicators only */
+
+  /* ===== Motion ========================================================= */
+  --ks-ease:          cubic-bezier(0.2, 0.8, 0.2, 1);   /* house easing */
+  --ks-ease-out:      cubic-bezier(0.23, 1, 0.32, 1);   /* strong ease-out (enter/exit) */
+  --ks-ease-in-out:   cubic-bezier(0.77, 0, 0.175, 1);  /* on-screen movement */
+  --ks-ease-drawer:   cubic-bezier(0.32, 0.72, 0, 1);   /* iOS-like drawer */
+  --ks-dur-press:     140ms;
+  --ks-dur-tooltip:   160ms;
+  --ks-dur-dropdown:  200ms;
+  --ks-dur-modal:     280ms;
+
+  /* ===== Convenience aliases (--le-*) =================================== */
+  --le-bg:        var(--ks-lacquer);
+  --le-surface:   var(--ks-lacquer-raised);
+  --le-accent:    var(--ks-kinpaku);
+  --le-accent-2:  var(--ks-patina);
+  --le-fg-1:      var(--ks-champagne);
+  --le-fg-2:      var(--ks-text);
+  --le-fg-3:      var(--ks-text-muted);
+  --le-hairline:  var(--ks-rule);
+}
+
+html.dark { color-scheme: dark; }
+
+/* ============================================================
+   Light mode — warm paper surfaces, dark ink, gold accents
+   deepened for contrast. Activated via html.light.
+   ============================================================ */
+html.light {
+  color-scheme: light;
+
+  --ks-kinpaku:        oklch(84% 0.19 80.46);
+  --ks-kinpaku-pale:   oklch(86% 0.07 84);
+  --ks-kinpaku-rich:   oklch(77% 0.13 82);
+  --ks-kinpaku-deep:   oklch(61% 0.085 78);
+  --ks-kinpaku-ink:    oklch(56% 0.11 82);   /* gold text on paper */
+
+  --ks-patina:         oklch(70% 0.12 188);
+  --ks-patina-pale:    oklch(82% 0.07 188);
+  --ks-patina-deep:    oklch(49% 0.08 188);
+  --ks-vermilion:      oklch(52% 0.16 35);
+
+  --ks-lacquer:        oklch(97% 0.012 95);
+  --ks-lacquer-deep:   oklch(94% 0.014 95);
+  --ks-lacquer-raised: oklch(99% 0.008 95);
+  --ks-graphite:       oklch(91% 0.012 95);
+  --ks-graphite-2:     oklch(88% 0.014 95);
+
+  --ks-champagne:      oklch(18% 0.02 95);
+  --ks-text:           oklch(25% 0.018 95);
+  --ks-text-muted:     oklch(45% 0.015 95);
+  --ks-text-faint:     oklch(55% 0.012 95);
+  --ks-text-mute-deep: oklch(65% 0.01 95);
+
+  --ks-rule:           oklch(25% 0.02 95 / 0.12);
+  --ks-rule-strong:    oklch(61% 0.085 78 / 0.45);
+
+  --ks-code-fg:           oklch(28% 0.02 95);
+  --ks-code-bg:           var(--ks-graphite);
+  --ks-code-block-fg:     oklch(30% 0.02 95);
+  --ks-code-block-bg:     var(--ks-lacquer-raised);
+  --ks-code-block-border: var(--ks-rule);
+  --ks-code-cmd:          var(--ks-kinpaku-ink);
+}
+
+/* ============================================================================
+   SEMANTIC HELPER CLASSES
+   Apply these for instant on-brand typography without re-declaring tokens.
+   ============================================================================ */
+
+.le-display {
+  font-family: var(--ks-font-display);
+  font-size: var(--ks-type-display-size);
+  font-weight: var(--ks-type-display-weight);
+  line-height: var(--ks-type-display-line);
+  letter-spacing: var(--ks-type-display-track);
+  color: var(--ks-champagne);
+}
+
+.le-headline {
+  font-family: var(--ks-font-display);
+  font-size: var(--ks-type-headline-size);
+  font-weight: var(--ks-type-headline-weight);
+  line-height: var(--ks-type-headline-line);
+  color: var(--ks-champagne);
+}
+
+.le-title {
+  font-family: var(--ks-font);
+  font-size: var(--ks-type-title-size);
+  font-weight: var(--ks-type-title-weight);
+  line-height: var(--ks-type-title-line);
+  color: var(--ks-champagne);
+}
+
+.le-body {
+  font-family: var(--ks-font);
+  font-size: var(--ks-type-body-size);
+  font-weight: 400;
+  line-height: var(--ks-type-body-line);
+  color: var(--ks-text);
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+
+.le-eyebrow {
+  font-family: var(--ks-mono);
+  font-size: var(--ks-type-eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--ks-type-eyebrow-track);
+  text-transform: uppercase;
+  color: var(--ks-kinpaku);
+}
+
+.le-mono {
+  font-family: var(--ks-mono);
+  font-size: var(--ks-type-mono-size);
+  font-weight: 500;
+  letter-spacing: var(--ks-type-mono-track);
+  text-transform: uppercase;
+  color: var(--ks-text-muted);
+}
+
+.le-wordmark {
+  font-family: var(--ks-font-wordmark);
+  font-size: var(--ks-type-wordmark-size);
+  font-weight: 400;
+  letter-spacing: var(--ks-type-wordmark-track);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ks-kinpaku);
+}
+
+.le-code,
+code.le-code {
+  font-family: var(--ks-mono);
+  font-size: 0.85em;
+  color: var(--ks-code-fg);
+  background: var(--ks-code-bg);
+  border-radius: var(--ks-code-radius);
+  padding: var(--ks-code-pad);
+}
